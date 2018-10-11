@@ -8,5 +8,25 @@
 
 
 <ion-content padding>
-  <ion-image src="assets/imgs/mylogo.jpeg" class="logo"></ion-image>
+  <img src="assets/imgs/mylogo.jpeg" alt="Logo" >
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>User Name</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+    </ion-card-content>
+    <ion-row>
+      <div>
+        <button ion-button (click)="registerUser()" color="secondary">Register</button>
+        <button ion-button (click)="loginUser()">Login</button>
+      </div>
+    </ion-row>
+  </ion-card>
+  
+  
 </ion-content>
