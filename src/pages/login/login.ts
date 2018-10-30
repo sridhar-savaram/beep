@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { LoginResponse } from '../../models/login-response.model';
+import { DataServiceProvider } from '../../providers/data-service/data-service';
+import { UserCredential } from 'firebase/auth';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,14 +18,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(private navCtrl: NavController, private navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private toast: ToastController,
+    private dataServiceProvider: DataServiceProvider) {
   }
 
-  registerUser(){
-    this.navCtrl.push("RegistrationPage");
+  login(event:LoginResponse){
+    console.log(event);
+    if(!event.error){
+      let profile = this.dataServiceProvider.getProfile(<UserCredential>event.result);
+      profile.subscribe((data) => {
+        data.length > 0? this.navCtrl.setRoot('TabsPage') : this.navCtrl.setRoot('ProfileEditPage');
+      });
+      
+    } else{ 
+      this.toast.create({
+        message: event.error.message,
+        duration: 3000
+      }).present();
+    }
+
+    
+    //this.navCtrl.setRoot("TabsPage");
   }
 
-  loginUser(){
-    this.navCtrl.setRoot("TabsPage");
-  }
 }
