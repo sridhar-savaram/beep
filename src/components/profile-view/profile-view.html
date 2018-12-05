@@ -1,0 +1,14 @@
+<!-- Generated template for the ProfileViewComponent component -->
+<div class="profile-view__image-container">
+    <img src="./assets/imgs/1.jpg" alt="Profile Image" class="profile-view__image">
+</div>
+<div *ngIf="profile">
+  <ion-card >
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input [readonly] [value]="profile.firstName"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</div>

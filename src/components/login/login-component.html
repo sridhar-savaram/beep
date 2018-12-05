@@ -1,0 +1,51 @@
+<form #loginForm="ngForm" novalidate>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>User Name</ion-label>
+        <ion-input 
+        type="email" 
+        [(ngModel)]="account.email" 
+        name="email" 
+        #email="ngModel" 
+        required
+        pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+        ></ion-input>
+      </ion-item>
+      <div padding *ngIf="email.invalid && email.dirty">
+        <span>Email address is not valid</span>
+      </div>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input 
+        type="password" 
+        [(ngModel)]="account.password" 
+        name="password" 
+        #password="ngModel" 
+        required
+        pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+        ></ion-input>
+      </ion-item>
+      <div padding *ngIf="password.invalid && password.dirty">
+        <span>Password must be minumum 6 characters and at least one uppercase letter</span>
+      </div>
+        <div class="login_buttonsrow">
+          <button ion-button (click)="registerUser()" color="secondary">Register</button>
+          <button ion-button (click)="loginUser()" class="login_button" [disabled]="loginForm.invalid">Login</button>
+        </div>
+      <div>
+        <button ion-button icon-left  clear (click)="loginWithGoogle()">
+          <ion-icon name="logo-google"></ion-icon>
+          Login with Google
+        </button>
+      </div>
+      <div>
+          <button ion-button icon-left  clear (click)="loginWithFacebook()">
+            <ion-icon name="logo-facebook"></ion-icon>
+            Login with Facebook
+          </button>
+        </div>
+    </ion-card-content>
+    
+  </ion-card>
+</form>

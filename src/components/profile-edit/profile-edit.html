@@ -1,0 +1,16 @@
+<ion-card>
+  <ion-item>
+    <ion-label floating >First Name</ion-label>
+    <ion-input type="text" [(ngModel)]="profile.firstName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Last Name</ion-label>
+    <ion-input type="text" [(ngModel)]="profile.lastName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>DOB</ion-label>
+    <ion-datetime dateFormat="MM-DD-YYYY" [(ngModel)]="profile.dob"></ion-datetime>
+  </ion-item>
+</ion-card>
+
+<button ion-button (click)="save()">Save</button>
