@@ -15,6 +15,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ChatServiceProvider } from '../providers/chat-service/chat-service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MessagesServiceProvider,
     AuthProvider,
-    DataServiceProvider
+    DataServiceProvider,
+    ChatServiceProvider
   ]
 })
 export class AppModule {}
